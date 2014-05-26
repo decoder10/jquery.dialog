@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link  rel="stylesheet" href="../styles/style.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="../jquery.dialog.js"></script>
+	<script>
+		$(function() {
+			$('.click').dialog({
+				show: "fade",
+				showSpeed: 500
+			});
+		});
+	</script>
+</head>
+<body>
+<a href="" data-popup="#popup" class="click">popup</a>
+
+<div id="popup">Jquery dialog</div>
+
+
+</body>
+</html>
