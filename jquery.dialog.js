@@ -1,4 +1,4 @@
-/*! jQuery dialog v0.1.0 | (c) 2014 Aram Mkrtchyan |
+/*! jQuery dialog v0.1.1 | (c) 2014 Aram Mkrtchyan |
  *
  */
 (function ($) {
@@ -90,16 +90,16 @@
 
 		switch (this.options.show) {
 			case "fade":
-				dialogContainer.fadeIn(this.options.sowSpeed);
-				overlay.fadeIn(this.options.sowSpeed);
+				dialogContainer.fadeIn(this.options.showSpeed);
+				overlay.fadeIn(this.options.showSpeed);
 				break;
 		}
 	};
 
 	Popup.prototype.close = function () {
-		switch (this.options.show) {
+		switch (this.options.hide) {
 			case "fade":
-				$(".dialogContainer, .dialogOverlay").fadeOut(this.options.fadeSpeed, function () {
+				$(".dialogContainer, .dialogOverlay").fadeOut(this.options.hideSpeed, function () {
 					this.remove();
 				});
 				break;
@@ -117,7 +117,9 @@
 
 		var settings = $.extend({
 			show: "none",
-			showSpeed: 500
+			hide: "none",
+			showSpeed: 500,
+			hideSpeed: 500
 		}, options);
 
 		return this.each(function () {
