@@ -1,0 +1,22 @@
+{
+  "name": "jquery.dialog",
+  "main": ["jquery.dialog.js", "dialog.css"],
+  "version": "0.1.1",
+  "homepage": "https://github.com/decoder10/jquery.dialog",
+  "authors": [
+    "Aram Mkrtchyan <mkrtchyan.aram89@gmail.com>"
+  ],
+  "description": "jQuery dialog plugin",
+  "keywords": [
+    "dialog",
+    "lightbox",
+    "popup"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
