@@ -35,7 +35,7 @@ JavaScript part
 ```sh
 <script>
 	$(function() {
-			$('#vutton').dialog({
+			$('#button').dialog({
 				show: "fade",
 				showSpeed: 500
 			});
