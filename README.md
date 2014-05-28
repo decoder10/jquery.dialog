@@ -27,7 +27,7 @@ Connect CSS file dialog.css
 HTML part
 ```sh
     <a href="" data-dialog="#dialog" id="button">dialog</a>
-    <div id="dialog">Jquery Dialog plugin</a>
+    <div id="dialog">Jquery Dialog plugin</div>
 ```
 
 JavaScript part
