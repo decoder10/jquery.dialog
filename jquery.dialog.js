@@ -10,7 +10,7 @@
 
 		var self = this;
 		this.element = $(element);
-		this.element.data("dialog", this);
+		this.element.data("jquery.dialog", this);
 
 		this.dialogSelector = this.element.attr("data-dialog");
 		this.containerSize = {
@@ -20,7 +20,7 @@
 
 		$(this.dialogSelector).hide();
 
-		this.element.on("click", function () {
+		this.element.on("click.dialog.jquery", function () {
 			self.open();
 			return false;
 		});
@@ -109,8 +109,9 @@
 		}
 	};
 
-	Dialog.prototype.destroy = function () {
-
+	Dialog.prototype.destroy = function () { alert("asjhkajsh");
+		this.element.off("click.dialog.jquery");
+		this.element.removeData("jquery.dialog");
 	};
 
 	$.fn.dialog = function (options) {
