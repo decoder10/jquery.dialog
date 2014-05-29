@@ -37,7 +37,7 @@
 		var dialogContainerleft = (windowWidth - containerWidth) / 2;
 
 		if (windowHeight > containerHeight) {
-			dialogContainerTop = (windowHeight - containerHeight) / 2
+			dialogContainerTop = (windowHeight - containerHeight) / 2;
 		} else if (windowHeight < containerHeight) {
 			dialogContainerTop = 50;
 			bottomSpace = 50;
@@ -84,32 +84,45 @@
 				break;
 		}
 
+		self.element.trigger("dialog.beforeShow");
+
 		$("body")
 			.append(dialogContainer)
 			.append(overlay);
 
 		switch (this.options.show) {
 			case "fade":
-				dialogContainer.fadeIn(this.options.showSpeed);
 				overlay.fadeIn(this.options.showSpeed);
+				dialogContainer.fadeIn(this.options.showSpeed, function() {
+						self.element.trigger("dialog.afterShow");
+				});
+				break;
+			default:
+				self.element.trigger("dialog.afterShow");
 				break;
 		}
 	};
 
 	Dialog.prototype.close = function () {
+		self = this;
+
+		this.element.trigger("dialog.beforeHide");
+
 		switch (this.options.hide) {
 			case "fade":
 				$(".dialogContainer, .dialogOverlay").fadeOut(this.options.hideSpeed, function () {
 					this.remove();
+					self.element.trigger("dialog.afterHide");
 				});
 				break;
 			default:
 				$(".dialogContainer, .dialogOverlay").remove();
+				self.element.trigger("dialog.afterHide");
 				break;
 		}
 	};
 
-	Dialog.prototype.destroy = function () { alert("asjhkajsh");
+	Dialog.prototype.destroy = function () {
 		this.element.off("click.dialog.jquery");
 		this.element.removeData("jquery.dialog");
 	};
