@@ -1,4 +1,4 @@
-/*! jQuery dialog v0.1.1 | (c) 2014 Aram Mkrtchyan |
+/*! jQuery dialog v0.1.2 | (c) 2014 Aram Mkrtchyan |
  *
  */
 (function ($) {
@@ -8,9 +8,9 @@
 
 		var self = this;
 		this.element = $(element);
-		this.element.data("popup", this);
+		this.element.data("dialog", this);
 
-		this.popupSelector = this.element.attr("data-popup");
+		this.popupSelector = this.element.attr("data-dialog");
 		this.containerSize = {
 			width: $(this.popupSelector).outerWidth(true),
 			height: $(this.popupSelector).outerHeight(true)
