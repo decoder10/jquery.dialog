@@ -3,21 +3,22 @@
  */
 (function ($) {
 
-	var Popup = function (element, options) {
+	var $templates = {};
+
+	var Dialog = function (element, options) {
 		this.options = options;
 
 		var self = this;
 		this.element = $(element);
 		this.element.data("dialog", this);
 
-		this.popupSelector = this.element.attr("data-dialog");
+		this.dialogSelector = this.element.attr("data-dialog");
 		this.containerSize = {
-			width: $(this.popupSelector).outerWidth(true),
-			height: $(this.popupSelector).outerHeight(true)
+			width: $(this.dialogSelector).outerWidth(true),
+			height: $(this.dialogSelector).outerHeight(true)
 		};
 
-		$(this.popupSelector).hide();
-
+		$(this.dialogSelector).hide();
 
 		this.element.on("click", function () {
 			self.open();
@@ -25,7 +26,7 @@
 		});
 	};
 
-	Popup.prototype.dialogContainerPosition = function () {
+	Dialog.prototype.dialogContainerPosition = function () {
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 		var containerWidth = this.containerSize.width;
@@ -51,13 +52,12 @@
 		};
 	};
 
-	Popup.prototype.open = function () {
+	Dialog.prototype.open = function () {
 		var self = this;
 
-		if (self.p == undefined) {
-			self.p = $(this.popupSelector).detach();
+		if ($templates[this.dialogSelector] == undefined) {
+			$templates[this.dialogSelector] = $(this.dialogSelector).detach();
 		}
-
 
 		var dialogClose = $("<a href='' class='dialogClose'>close</a>");
 		dialogClose.on("click", function () {
@@ -71,7 +71,7 @@
 			.css(this.containerSize)
 			.css(self.dialogContainerPosition())
 			.append(dialogClose)
-			.append(self.p.clone().show());
+			.append($templates[this.dialogSelector].clone().show());
 
 		$(window).resize(function () {
 			dialogContainer.css(self.dialogContainerPosition());
@@ -96,7 +96,7 @@
 		}
 	};
 
-	Popup.prototype.close = function () {
+	Dialog.prototype.close = function () {
 		switch (this.options.hide) {
 			case "fade":
 				$(".dialogContainer, .dialogOverlay").fadeOut(this.options.hideSpeed, function () {
@@ -109,7 +109,7 @@
 		}
 	};
 
-	Popup.prototype.destroy = function () {
+	Dialog.prototype.destroy = function () {
 
 	};
 
@@ -123,7 +123,7 @@
 		}, options);
 
 		return this.each(function () {
-			new Popup(this, settings);
+			new Dialog(this, settings);
 		});
 	}
 }(jQuery));
