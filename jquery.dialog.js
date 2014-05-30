@@ -47,7 +47,7 @@
 
 		return {
 			left: dialogContainerleft,
-			top: dialogContainerTop,
+			marginTop: dialogContainerTop,
 			marginBottom: bottomSpace
 		};
 	};
@@ -73,28 +73,31 @@
 			.append(dialogClose)
 			.append($templates[this.dialogSelector].clone().show());
 
+		var marginFix = $("<div class='marginFix'></div>")
+			.append(dialogContainer);
+
 		$(window).resize(function () {
 			dialogContainer.css(self.dialogContainerPosition());
 		});
 
 		switch (this.options.show) {
 			case "fade":
-					dialogContainer.hide();
-					overlay.hide();
+				dialogContainer.hide();
+				overlay.hide();
 				break;
 		}
 
 		self.element.trigger("dialog.beforeShow");
 
 		$("body")
-			.append(dialogContainer)
+			.append(marginFix)
 			.append(overlay);
 
 		switch (this.options.show) {
 			case "fade":
 				overlay.fadeIn(this.options.showSpeed);
-				dialogContainer.fadeIn(this.options.showSpeed, function() {
-						self.element.trigger("dialog.afterShow");
+				dialogContainer.fadeIn(this.options.showSpeed, function () {
+					self.element.trigger("dialog.afterShow");
 				});
 				break;
 			default:
