@@ -26,6 +26,7 @@
 	background: #ffffff;
 	padding: 1px 0;
 	top: 0;
+	height: auto !important;
 }
 
 .dialogContainer .dialogClose {
