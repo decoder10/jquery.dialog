@@ -1,6 +1,7 @@
-/*! jQuery dialog v0.1.2 | (c) 2014 Aram Mkrtchyan |
+/*! jQuery dialog v0.2.0 | (c) 2014 Aram Mkrtchyan |
  *
  */
+
 (function ($) {
 
 	var $templates = {};

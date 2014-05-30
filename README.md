@@ -6,7 +6,7 @@ jquery dialog plugin
 Version
 ----
 
-0.1.2
+0.2.0
 
 How to use
 --------------
@@ -52,6 +52,15 @@ Options
 |  hide      | none  <br/> fade | disappear animation type        |
 |  hideSpeed | int              | animation speed                 |
 
+
+Events
+
+|  Event             | Description     |
+|--------------------|-----------------|
+|  dialog.beforeShow | call befor show |
+|  dialog.afterShow  | call after show |
+|  dialog.beforHide  | call befor hide |
+|  dialog.afterHide  | call after hide |
 
 
 License
