@@ -36,7 +36,7 @@
 	height: 19px;
 	background: url(../images/close.png) no-repeat;
 	display: block;
-	text-indent: -999px;
+	text-indent: -9999px;
 	z-index: 115;
 }
 

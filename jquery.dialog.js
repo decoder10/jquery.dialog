@@ -82,6 +82,7 @@
 
 		switch (this.options.show) {
 			case "fade":
+				marginFix.hide();
 				dialogContainer.hide();
 				overlay.hide();
 				break;
@@ -95,6 +96,7 @@
 
 		switch (this.options.show) {
 			case "fade":
+				marginFix.show();
 				overlay.fadeIn(this.options.showSpeed);
 				dialogContainer.fadeIn(this.options.showSpeed, function () {
 					self.element.trigger("dialog.afterShow");
@@ -113,13 +115,13 @@
 
 		switch (this.options.hide) {
 			case "fade":
-				$(".dialogContainer, .dialogOverlay").fadeOut(this.options.hideSpeed, function () {
+				$(".dialogContainer, .dialogOverlay, .marginFix").fadeOut(this.options.hideSpeed, function () {
 					this.remove();
 					self.element.trigger("dialog.afterHide");
 				});
 				break;
 			default:
-				$(".dialogContainer, .dialogOverlay").remove();
+				$(".dialogContainer, .dialogOverlay, .marginFix").remove();
 				self.element.trigger("dialog.afterHide");
 				break;
 		}
