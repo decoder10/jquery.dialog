@@ -34,11 +34,12 @@
 		var containerHeight = this.containerSize.height;
 		var dialogContainerTop;
 		var bottomSpace;
+		var windowScrollTop = $(window).scrollTop();
 
 		var dialogContainerleft = (windowWidth - containerWidth) / 2;
 
 		if (windowHeight > containerHeight) {
-			dialogContainerTop = (windowHeight - containerHeight) / 2;
+			dialogContainerTop = (windowHeight - containerHeight) / 2 + windowScrollTop;
 		} else if (windowHeight < containerHeight) {
 			dialogContainerTop = 50;
 			bottomSpace = 50;
@@ -139,7 +140,8 @@
 			show: "none",
 			hide: "none",
 			showSpeed: 500,
-			hideSpeed: 500
+			hideSpeed: 500,
+			element: null
 		}, options);
 
 		return this.each(function () {
